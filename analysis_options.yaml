@@ -1,0 +1,34 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # ✅ Code Style Rules
+    prefer_single_quotes: true          # Use 'single quotes' instead of "double quotes"
+    prefer_const_constructors: true     # Use `const` for constructors when possible
+    prefer_final_fields: true           # Use `final` for class fields when possible
+    prefer_interpolation_to_compose_strings: true  # Use string interpolation instead of `+`
+    always_use_package_imports: true    # Use package imports instead of relative imports
+    unnecessary_this: true              # Avoid using `this.` when not needed
+    avoid_unnecessary_containers: true  # Prevent excessive use of Containers
+
+    # ✅ Naming Conventions
+    camel_case_types: true              # Ensure class names follow CamelCase
+    camel_case_extensions: true         # Ensure extension names follow CamelCase
+    non_constant_identifier_names: false # Disallow non-constant identifiers using underscores
+
+    # ✅ Best Practices
+    avoid_print: true                   # Avoid using `print`, use `debugPrint` instead
+    avoid_empty_else: true               # Prevent empty `else` blocks
+    avoid_unnecessary_else: true         # Encourage use of `return` instead of `else`
+    prefer_typing_uninitialized_variables: true  # Avoid using `var` without specifying type
+    avoid_setters_without_getters: true  # Setters must have corresponding getters
+
+    # ✅ Performance Improvements
+    use_rethrow_when_possible: true      # Use `rethrow` to preserve stack trace
+    avoid_redundant_argument_values: true # Avoid passing default values explicitly
+    unnecessary_lambdas: true            # Encourage direct function references instead of lambdas
+
+    # ✅ Flutter-Specific Rules
+    avoid_returning_null_for_future: true # Avoid returning `null` from async functions
+    prefer_const_literals_to_create_immutables: true  # Use `const` for immutable lists/maps
+    prefer_relative_imports: false         # Prefer package imports over relative imports
