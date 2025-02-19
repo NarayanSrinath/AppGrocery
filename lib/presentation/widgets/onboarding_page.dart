@@ -46,9 +46,6 @@ class OnboardingPage extends StatelessWidget {
           bottom: 100, // ✅ Adjust text position above button
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start, // ✅ Left-align text
-            children: [
-              
-            ],
           ),
         ),
 

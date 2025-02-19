@@ -7,26 +7,26 @@ class BottomNavBar extends StatelessWidget {
   final int notificationCount;
 
   const BottomNavBar({
-    Key? key,
+    super.key,
     required this.selectedIndex,
     required this.onItemTapped,
     required this.notificationCount,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+      padding: const EdgeInsets.only(bottom: 25, left: 15, right: 15), // Increased bottom padding
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12), // Slightly increased vertical padding
         decoration: BoxDecoration(
           color: AppColors.white,
-          borderRadius: BorderRadius.circular(50),
-          boxShadow: [
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: const [
             BoxShadow(
               color: Colors.black12,
-              blurRadius: 10,
-              spreadRadius: 2,
+              blurRadius: 6,
+              spreadRadius: 1,
             ),
           ],
         ),
@@ -47,14 +47,14 @@ class BottomNavBar extends StatelessWidget {
     return GestureDetector(
       onTap: () => onItemTapped(index),
       child: Container(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.black : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Icon(
           icon,
-          size: 28,
+          size: 24,
           color: isSelected ? AppColors.white : Colors.grey,
         ),
       ),
@@ -66,10 +66,10 @@ class BottomNavBar extends StatelessWidget {
     return GestureDetector(
       onTap: () => onItemTapped(index),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.black : Colors.transparent,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -78,15 +78,15 @@ class BottomNavBar extends StatelessWidget {
               Text(
                 count.toString(),
                 style: TextStyle(
-                  color:isSelected ? AppColors.white : Colors.grey,
+                  color: isSelected ? AppColors.white : Colors.grey,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: 14,
                 ),
               ),
-            SizedBox(width: 6),
+            const SizedBox(width: 4),
             Icon(
               icon,
-              size: 28,
+              size: 24,
               color: isSelected ? AppColors.white : Colors.grey,
             ),
           ],

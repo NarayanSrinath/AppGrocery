@@ -318,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Icon(Icons.check_circle,
+                                      const Icon(Icons.check_circle,
                                           color: AppColors.primary, size: 24),
                                       const SizedBox(width: 8),
                                       Text(

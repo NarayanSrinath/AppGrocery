@@ -104,7 +104,7 @@ Widget _buildHeader(BuildContext context) { // Pass context as a parameter
         onPressed: () {
           showAddAddressBottomSheet(context); // ✅ Pass context correctly
         },
-        icon: Icon(Icons.add, color: AppColors.primary),
+        icon: const Icon(Icons.add, color: AppColors.primary),
         label: Text(
           'New Address',
           style: AppFonts.button.copyWith(color: AppColors.primary),
@@ -156,7 +156,7 @@ Widget _buildAddressCard({
             // Home/Office Icon in Circular Avatar
             Row(
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundColor: AppColors.secondary,
                   radius: 16, // Smaller size
                   child: Icon(Icons.home, color: AppColors.primary, size: 18),
@@ -174,7 +174,7 @@ Widget _buildAddressCard({
               ),
               child: Row(
                 children: [
-                  Icon(Icons.location_on, color: AppColors.white, size: 14),
+                  const Icon(Icons.location_on, color: AppColors.white, size: 14),
                   const SizedBox(width: 3),
                   Text(type,
                       style: AppFonts.button
@@ -185,7 +185,7 @@ Widget _buildAddressCard({
           ],
         ),
         const SizedBox(height: 6),
-        Divider(color: Colors.black, thickness: 0.5),
+        const Divider(color: Colors.black, thickness: 0.5),
 
         // User Name & Address
         const SizedBox(height: 6),
@@ -234,12 +234,12 @@ Widget _buildAddressCard({
 Widget _actionButton(String text, Color bgColor, Color textColor) {
   return ElevatedButton(
     onPressed: () {},
-    child: Text(text, style: AppFonts.button.copyWith(color: textColor)),
     style: ElevatedButton.styleFrom(
       backgroundColor: bgColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     ),
+    child: Text(text, style: AppFonts.button.copyWith(color: textColor)),
   );
 }
 
@@ -248,12 +248,12 @@ Widget _buildContinueButton(BuildContext context) {
     width: double.infinity,
     child: ElevatedButton(
       onPressed: () => Navigator.pop(context),
-      child: Text('Continue', style: AppFonts.button),
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
-        padding: EdgeInsets.symmetric(vertical: 14),
+        padding: const EdgeInsets.symmetric(vertical: 14),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
+      child: Text('Continue', style: AppFonts.button),
     ),
   );
 }
@@ -340,19 +340,25 @@ void showAddAddressBottomSheet(BuildContext context) {
 
 Widget _buildTextField(String label, String placeholder) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 4), // ✅ Reduced vertical padding
+    padding: const EdgeInsets.symmetric(vertical: 2), // Reduced vertical padding
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: AppFonts.body.copyWith(fontWeight: FontWeight.w500)), // ✅ Using AppFonts
-        const SizedBox(height: 3),
+        Text(
+          label,
+          style: AppFonts.body.copyWith(fontWeight: FontWeight.w500, fontSize: 14), // Smaller font size
+        ),
+        const SizedBox(height: 2),
         TextFormField(
           initialValue: placeholder,
+          style: const TextStyle(fontSize: 14), // Smaller input text
           decoration: InputDecoration(
             filled: true,
             fillColor: Colors.grey.shade100,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)), // ✅ Slightly smaller radius
-            contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5), // ✅ Reduced padding
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4), // Slightly smaller radius
+            ),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4), // Reduced padding
           ),
         ),
       ],

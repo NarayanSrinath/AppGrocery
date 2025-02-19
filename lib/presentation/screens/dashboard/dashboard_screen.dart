@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:groceryapp/presentation/screens/nav%20screens/home_page.dart';
 import 'package:groceryapp/presentation/widgets/%20side_navbar.dart';
 import 'package:groceryapp/presentation/widgets/custombottom_navbar.dart';
+import 'package:groceryapp/presentation/widgets/showAddressBottomSheet.dart';
 
 
 class DashboardScreen extends StatefulWidget {
@@ -13,24 +15,32 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   int _bottomNavIndex = 0; // Index for bottom nav
   int _sideNavIndex = 0; // Index for side nav
-  int _notificationCount = 5; // Example notification count
+  final int _notificationCount = 5; // Example notification count
 
-  // Bottom Navigation Screens
-  final List<Widget> _bottomScreens = [
-    Center(child: Text("🏠 Home", style: TextStyle(fontSize: 22))),
-    Center(child: Text("📦 Orders", style: TextStyle(fontSize: 22))),
-    Center(child: Text("🔔 Notifications", style: TextStyle(fontSize: 22))),
-  ];
+    @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showAddressBottomSheet(context);
+    });
+  }
+// Bottom Navigation Screens
+final List<Widget> _bottomScreens = [
+  Homepage(),
+  Container(),
+  Container(),
+];
 
-  // Side Navigation Screens
-  final List<Widget> _sideScreens = [
-    Center(child: Text("🏠 Home", style: TextStyle(fontSize: 22))), // Common with Bottom Nav
-    Center(child: Text("📂 Categories", style: TextStyle(fontSize: 22))),
-    Center(child: Text("👤 Profile", style: TextStyle(fontSize: 22))),
-    Center(child: Text("⚙️ Settings", style: TextStyle(fontSize: 22))),
-    Center(child: Text("📜 Terms & Conditions", style: TextStyle(fontSize: 22))),
-    Center(child: Text("🛡 Policies", style: TextStyle(fontSize: 22))),
-  ];
+// Side Navigation Screens
+final List<Widget> _sideScreens = [
+  Container(), // Common with Bottom Nav
+  Container(),
+  Container(),
+  Container(),
+  Container(),
+  Container(),
+];
+
 
   void _onBottomNavTapped(int index) {
     setState(() {
@@ -54,7 +64,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       drawer: SideNavBar(
         selectedIndex: _sideNavIndex,
